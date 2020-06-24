@@ -6,13 +6,13 @@ export class Lista{
     creadaEn: Date;
     terminadaEn: Date;
     completada: boolean;
-    item: ListaItem[];
+    items: ListaItem[];
 
     constructor(title: string){
         this.titulo = title
         this.creadaEn = new Date()
         this.completada = false
-        this.item = []
+        this.items = []
         this.id = new Date().getTime();
     }
 }
