@@ -19,7 +19,6 @@ export class AddPage implements OnInit {
       .subscribe( params => {
           let idlista = params['listId']
           this.list = this._deseosService.getList(idlista)
-          console.log(this.list)
         })
           
   }
@@ -34,6 +33,30 @@ export class AddPage implements OnInit {
     const newItem = new ListaItem(this.itemName);
     this.list.items.push(newItem)
     this.itemName = ''
+    this._deseosService.saveStorage()
+  }
+
+  deleteItem(item){
+    let newItemList:ListaItem[] = []
+    this.list.items.forEach( listItem =>{
+      listItem != item ? newItemList.push(listItem) : false
+    } )
+    this.list.items = newItemList
+    this._deseosService.saveStorage()
+  }
+
+  itemChange(item: ListaItem){
+
+    const notReady = this.list.items.filter( datalist => datalist.completado==false ).length
+
+    if(notReady != 0){
+      this.list.terminadaEn = null
+      this.list.completada = false      
+    }else {
+      this.list.terminadaEn = new Date()
+      this.list.completada = true
+    }
+
     this._deseosService.saveStorage()
   }
 

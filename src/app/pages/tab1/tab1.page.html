@@ -6,13 +6,9 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content color="dark">
-  <ion-list color="dark">
-    <ion-item color="dark" (click)="navigateTo(item)" *ngFor="let item of listas" detail>
-      <ion-label>{{item.titulo}}</ion-label>
-    </ion-item>
-  </ion-list>
+
+  <app-listas [terminada]="false"></app-listas>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="tertiary" (click)="addList()">

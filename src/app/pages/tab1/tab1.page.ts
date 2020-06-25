@@ -19,7 +19,6 @@ export class Tab1Page {
     private _router: Router,
     private _alertCtr: AlertController
   ) {
-    this.listas= this._deseoService.loadStorage() 
   }
 
   async addList(){
@@ -52,8 +51,6 @@ export class Tab1Page {
     alert.present();
   }
 
-  navigateTo(list){
-    this._router.navigateByUrl(`/tabs/tab1/add/${list.id}`)
-  }
+
 
 }

@@ -6,7 +6,7 @@ import { Lista } from '../models/lista.model';
 })
 export class DeseosService {
 
-  listas: Lista[] =[]
+  public listas: Lista[] =[]
 
   constructor(  ) {
     this.listas = this.loadStorage()
@@ -23,6 +23,10 @@ export class DeseosService {
     let numericId = Number(id)
 
     return this.listas.find( listData => {return listData.id === numericId })
+   }
+
+   deleteList(list:Lista){
+    this.listas = this.listas.filter(data => data.id != list.id)
    }
 
    loadStorage(){
